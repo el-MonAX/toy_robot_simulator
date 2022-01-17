@@ -52,9 +52,9 @@ c)
 
 ## Requirements
 
-- Ruby 2.6.4
+- Ruby 3.0.1
 
-- Libraries: Bundler, rspec
+- Libraries: Bundler(2.2.15), rspec
 
 ## Dependencies, Test and Run
 
