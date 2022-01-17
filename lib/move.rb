@@ -1,3 +1,4 @@
+# implementation of logic for movement
 class Move
   def initialize(robot, game_board)
     @robot = robot
@@ -21,22 +22,19 @@ class Move
   def movement
     movement = nil
     case @robot.current_position.direction
-    when :north
-      movement = { x: 0, y: 1 }
-    when :east
-      movement = { x: 1, y: 0 }
-    when :south
-      movement = { x: 0, y: -1 }
-    when :west
-      movement = { x: -1, y: 0 }
+    when :north then movement = { x: 0, y: 1 }
+    when :east then movement = { x: 1, y: 0 }
+    when :south then movement = { x: 0, y: -1 }
+    when :west then movement = { x: -1, y: 0 }
     end
     movement
   end
 
   def result(movement, position)
-    if @game_board.valid_position?(position.x_coord + movement[:x], position.y_coord + movement[:y])
-      @robot.current_position = Position.new(position.x_coord + movement[:x],
-                                             position.y_coord + movement[:y],
+    position_x = position.x_coord + movement[:x]
+    position_y = position.y_coord + movement[:y]
+    if @game_board.valid_position?(position_x, position_y)
+      @robot.current_position = Position.new(position_x, position_y,
                                              position.direction)
       true
     else

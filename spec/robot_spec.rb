@@ -25,10 +25,10 @@ describe Robot do
     end
 
     context 'when robot is on the game board' do
-      let(:current_position) { double(x_coord: 1, y_coord: 2, direction: :west) }
+      let(:position) { double(x_coord: 1, y_coord: 2, direction: :west) }
 
       before do
-        allow(robot).to receive(:current_position).and_return(current_position)
+        allow(robot).to receive(:current_position).and_return(position)
       end
 
       it { expect(robot.report).to eq('1,2,WEST') }

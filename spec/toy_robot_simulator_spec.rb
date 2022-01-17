@@ -19,9 +19,12 @@ describe ToyRobotSimulator do
       input = 'place 1, 1, north'
 
       it 'creates command with the correct arguments' do
-        position = instance_double('Position', x_coord: 1, y_coord: 1, direction: 'north')
+        position = instance_double('Position', x_coord: 1, y_coord: 1,
+                                               direction: 'north')
 
-        expect(Position).to receive(:new).with('1', '1', 'north').and_return(position)
+        expect(Position).to receive(:new)
+          .with('1', '1', 'north')
+          .and_return(position)
         expect(Place).to receive(:new).with(robot, game_board, position)
         command.parse(input)
       end

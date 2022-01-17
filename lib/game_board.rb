@@ -1,3 +1,4 @@
+# GameBoard
 class GameBoard
   attr_reader :rows, :columns
 

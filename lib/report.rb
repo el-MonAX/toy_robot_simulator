@@ -1,3 +1,4 @@
+# robot position report
 class Report
   def initialize(robot)
     @robot = robot

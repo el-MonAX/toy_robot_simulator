@@ -1,4 +1,4 @@
-require 'pry'
+# implementation of logic for turn left
 class Left
   def initialize(robot)
     @robot = robot
@@ -13,10 +13,11 @@ class Left
   def turn_left
     return false unless @robot.placed_on_board?
 
-    index = ToyRobotSimulator::DIRECTIONS.index(@robot.current_position.direction)
+    position = @robot.current_position
+    index = ToyRobotSimulator::DIRECTIONS.index(position.direction)
     direction_left = ToyRobotSimulator::DIRECTIONS.rotate(-1)[index]
-    @robot.current_position = Position.new(@robot.current_position.x_coord,
-                                           @robot.current_position.y_coord,
+    @robot.current_position = Position.new(position.x_coord,
+                                           position.y_coord,
                                            direction_left)
 
     true

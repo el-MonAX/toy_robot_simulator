@@ -1,3 +1,4 @@
+# implementation of logic for turn right
 class Right
   def initialize(robot)
     @robot = robot
@@ -12,10 +13,10 @@ class Right
   def turn_right
     return false unless @robot.placed_on_board?
 
-    index = ToyRobotSimulator::DIRECTIONS.index(@robot.current_position.direction)
+    position = @robot.current_position
+    index = ToyRobotSimulator::DIRECTIONS.index(position.direction)
     direction_right = ToyRobotSimulator::DIRECTIONS.rotate[index]
-    @robot.current_position = Position.new(@robot.current_position.x_coord,
-                                           @robot.current_position.y_coord,
+    @robot.current_position = Position.new(position.x_coord, position.y_coord,
                                            direction_right)
 
     true

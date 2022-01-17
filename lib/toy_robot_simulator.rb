@@ -7,6 +7,7 @@ require_relative 'right'
 require_relative 'left'
 require_relative 'move'
 
+# ToyRobotSimulator
 class ToyRobotSimulator
   DIRECTIONS = %i[north east south west].freeze
   COMMANDS = %i[place move left right report exit].freeze
@@ -22,16 +23,19 @@ class ToyRobotSimulator
     command, x_coord, y_coord, direction = input.tr(',', ' ').split
     command = command.downcase.to_sym
 
-    if command == :place
+    execute_commands(command, x_coord, y_coord, direction)
+  end
+
+  private
+
+  def execute_commands(command, x_coord, y_coord, direction)
+    case command
+    when :place
       Place.new(@robot, @game_board, Position.new(x_coord, y_coord, direction))
-    elsif command == :move
-      Move.new(@robot, @game_board)
-    elsif command == :left
-      Left.new(@robot)
-    elsif command == :right
-      Right.new(@robot)
-    elsif command == :report
-      Report.new(@robot)
+    when :move then Move.new(@robot, @game_board)
+    when :left then Left.new(@robot)
+    when :right then Right.new(@robot)
+    when :report then Report.new(@robot)
     end
   end
 end
